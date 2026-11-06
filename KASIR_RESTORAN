@@ -1,0 +1,69 @@
+total = 0
+
+print("=== KASIR RESTORAN ===")
+
+while True:
+    print("\n=== MENU MAKANAN ===")
+    print("1. Soto Ayam    - Rp12.000")
+    print("2. Pecel Lele   - Rp17.000")
+    print("3. Ayam Bakar   - Rp23.000")
+    print("4. Gado-Gado    - Rp14.000")
+    print("5. Mie Goreng   - Rp16.000")
+    print("0. Selesai")
+
+    pilihan = input("Pilih menu (0-5): ")
+
+    if pilihan == "0":
+        break
+    elif pilihan == "1":
+        nama = "Soto Ayam"
+        harga = 12000
+    elif pilihan == "2":
+        nama = "Pecel Lele"
+        harga = 17000
+    elif pilihan == "3":
+        nama = "Ayam Bakar"
+        harga = 23000
+    elif pilihan == "4":
+        nama = "Gado-Gado"
+        harga = 14000
+    elif pilihan == "5":
+        nama = "Mie Goreng"
+        harga = 16000
+    else:
+        print("Pilihan tidak tersedia.")
+        continue
+
+    jumlah = input("Masukkan jumlah pesanan: ")
+
+    if not jumlah.isdigit():
+        print("Jumlah harus berupa angka bulat positif.")
+        continue
+
+    jumlah = int(jumlah)
+
+    if jumlah <= 0:
+        print("Jumlah harus lebih dari 0.")
+        continue
+
+    subtotal = harga * jumlah
+    total = total + subtotal
+
+    print(f"Pesanan: {nama} x {jumlah}")
+    print(f"Subtotal: Rp{subtotal:,}".replace(",", "."))
+
+# Hitung diskon setelah selesai memilih
+if total > 200000:
+    diskon = 20
+else:
+    diskon = 0
+
+potongan = total * diskon // 100
+total_bayar = total - potongan
+
+print("\n=== STRUK PEMBAYARAN ===")
+print(f"Total belanja : Rp{total:,}".replace(",", "."))
+print(f"Diskon        : {diskon}%")
+print(f"Potongan      : Rp{potongan:,}".replace(",", "."))
+print(f"Total bayar   : Rp{total_bayar:,}".replace(",", "."))
+print("Terima kasih!")
